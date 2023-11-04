@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeet</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}?version=1">
+</head>
+<body>
+    <header class="header">
+        <picture class="picture">
+            <img src="https://homeet.hse.ru/static/media/logo_main.b8cda893341cae4261fc65095645f799.svg" alt="Лох">
+        </picture>
+        <button class="bttn" id="header-button">Выйти из аккаунта</button>
+    </header>
+    <main class>
+        <div class='container-1'>
+            <div class="reg-top">
+                <button class="bttn reg"><a href="{% url 'index' %}">Назад</a></button>
+                <div class="container-2">
+                    <h3 style="margin-right: 16px; font-size: 32px; font-weight: 700;">Создание профиля</h3>
+                    <div class="container-2-slash">
+                        <p style="margin-right: 16px;">/</p>
+                        <p style="font-weight: 700;">Образование</p>
+                    </div>
+                </div>
+                <div class="reg-bar"><div class="reg-progress-bar"></div></div>
+            </div>
+            <div class="reg-body">
+                <div class="reg-body-container-left">
+                    <form><div class="myform">
+                    <div class="myform-name">
+                        <div class="myform-radio"><div class="myform-radio-wrapper">
+                            <div class="radio-button">
+                                <input id="Student" type="radio" name="speciality">
+                                <label class="radio-label">Студент / выпускник</label>
+                                <input id="Worker" type="radio" name="speciality">
+                                <label class="radio-label">Сотрудник</label>
+                            </div>
+                        </div></div>
+                    </div>
+                    <div class="myform-course">
+                        <p style="font-size: 14px; color: #5D5B66; padding-bottom: 4px;">Курс</p>
+                        <div class="myform-select"><form>
+                            <input type="radio" id="number1" name="number" value="1" class="select-radio">
+                            <label for="number1"><p style="margin: 10px;">1</p></label>
+                            <input type="radio" id="number2" name="number" value="2" class="select-radio">
+                            <label for="number2"><p style="margin: 10px;">2</p></label>
+                            <input type="radio" id="number3" name="number" value="3" class="select-radio">
+                            <label for="number3"><p style="margin: 10px;">3</p></label>
+                            <input type="radio" id="number4" name="number" value="4" class="select-radio">
+                            <label for="number4"><p style="margin: 10px;">4</p></label>
+                            <input type="radio" id="number5" name="number" value="5" class="select-radio">
+                            <label for="number5"><p style="margin: 10px;">5</p></label>
+                            <input type="radio" id="number6" name="number" value="6" class="select-radio">
+                            <label for="number6"><p style="margin: 10px;">6</p></label>
+                        </form></div>
+                        <div class="course-checkbox" style="margin-top: 8px;">
+                            <input type="checkbox" id="check1" name="check">
+                            <label for="check1">Уже окончил Вышку</label>
+                        </div>
+                    </div>
+                    <div class="myform-grade">
+                        <p style="font-size: 14px; color: #5D5B66; padding-bottom: 4px;">Ступень образования</p>
+                        <select id="inputGrade">
+                            <option value="">-</option>
+                            <option value="бакалавриат">Бакалавриат</option>
+                            <option value="специалитет">Специалитет</option>
+                            <option value="магистратура">Магистратура</option>
+                          </select>
+                        <p class="inputNameError"></p>
+                    </div>
+                    <div class="myform-faculty">
+                        <p style="font-size: 14px; color: #5D5B66; padding-bottom: 4px;">Факультет</p>
+                        <select id="inputFaculty">
+                            <option value="">-</option>
+                            <option value="МИЭМ">МИЭМ</option>
+                            <option value="ФКН">ФКН</option>
+                            <option value="ВШБ">ВШБ</option>
+                            <option value="МИЭФ">МИЭФ</option>
+                          </select>
+                        <p class="inputNameError"></p>
+                    </div>
+                    <div class="myform-program">
+                        <p style="font-size: 14px; color: #5D5B66; padding-bottom: 4px;">Образовательная программа</p>
+                        <select id="inputProgram">
+                            <option value="">-</option>
+                            <option value="ИБ">Информационная безопасность</option>
+                            <option value="ИТСС">Инфокоммуникационные технологии и системы связи</option>
+                            <option value="ИВТ">Информатика и вычислительная техника</option>
+                            <option value="ПМ">Прикладная математика</option>
+                            <option value="ПМИ">Прикладная математика и информатика</option>
+                            <option value="ПАД">Прикладной анализ данных</option>
+                            <option value="ПИ">Программная инженерия</option>
+                          </select>
+                        <p class="inputNameError"></p>
+                    </div>
+
+                    <div class="myform-work" >
+                        <input type="text" placeholder="Работа" class="input work">
+                    </div>
+
+                </div></form>
+                </div>
+                <div class="reg-body-container-right">
+                    <div class="preview">
+                        <p class="preview-gray">Так будет выглядеть твоя будущая страница</p>
+                        <div class="preview-block">
+                            <div class="preview-block-left">
+                                <div class="preview-photo">
+                                    <img src="{{ last_user.image.url|slice:"6:" }}" alt="" class="preview-img">
+                                </div>
+                                <button class="bttn-preview">Показать контакты</button>
+                            </div>
+                            <div class="preview-block-right">
+                                <div class="preview-info">
+                                    <div class="info-list">
+                                        <p style="font-weight: 700;">{{ last_user.name_surname }}</p>
+                                        <div class="info-list-container">
+                                            <p style="font-size: 9px;">{{ last_user.gender }}</p>
+                                            <div class="info-list-dot"></div>
+                                            <p style="font-size: 9px;">{{ age }} лет</p>
+                                            <div class="info-list-dot"></div>
+                                            <p id="studyInfo" style="font-size: 9px;"><span>1</span> курc <span>бакалавриат</span> <span>ВШБ</span> <span>ИБ</span></p>
+                                        </div>
+                                        <div class="info-empty"><p style="font-size: 9px; text-align: center;">СТО в Бизнес в стиле .RU</p></div>
+                                        <div class="info-more-container" style="padding-top: 10px;">
+                                            <p style="font-size: 9px; color:#5D5B66;">Мне очень нравится устраивать вечеринки,
+                                                дебоширить и мазать с...</p>
+                                            <p style="font-size: 9px; color: #7953c3;">Развернуть...</p>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="info-etc">
+                                        <div class="info-etc-top">
+                                            <div class="info-etc-top-1"></div>
+                                            <div class="info-etc-top-2"></div>
+                                        </div>
+                                        <div class="info-etc-bot">
+                                            <div class="info-etc-line"></div>
+                                            <div class="info-etc-container">
+                                                <div class="info-etc-container-1"></div>
+                                                <div class="info-etc-container-2"></div>
+                                            </div>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dont-know-block">
+                        <div>
+                        <p style="padding-bottom: 4px;">Расскажи где ты учишься</p>
+                        <p style="font-size: 14px; color:#5D5B66;">Часто студенты ищут соседей по схожим интересам</p>
+                        </div>
+                        <img src="{% static 'img/smile2.png' %}" alt="boo" width="38px" height="38px" style="margin-top: 5px;">
+                    </div>
+                    <div class="continue-button">
+                        <button class="bttn continue">Продолжить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer class="footer">
+        <div class="support-block">
+            <p class="support-email">Support@homeet.com</p>
+            <p class="support-gray">Техническая поддержка</p>
+            <div class="support-menu">
+                <div class="support-menu-list">
+                    <p>О сервисе</p>
+                    <p>Контакты</p>
+                    <p>Политика конфиденциальности</p>
+                </div>
+                <div class="support-menu-icons">
+                    <img src="{% static 'img/telegram.png' %}" alt="boo" style="padding-right: 8px;" height="24px" width="24px">
+                    <img src="{% static 'img/vk.png' %}" alt="boo" height="24px" width="24px">
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-line"></div>
+        <div class="footer-warn">
+            <div>
+                <p style="font-size: 14px; color:#aaaaaa; padding-bottom: 4px;">Предложение не является публичной офертой.</p>
+                <p style="font-size: 14px; color:#aaaaaa;">Сервис не несет ответственности за действия пользователей, достоверность информации и т.д.</p>
+            </div>
+            <p style="font-size: 14px; color:#000; align-self: flex-end;">Сделано в бвср</p>
+        </div>
+    </footer>
+    <div class="end-line"></div>
+
+    <section>
+    </section>
+    <aside></aside>
+<script src="{% static 'js/myscript2.js' %}?version=1"></script>
+</body>
+</html>

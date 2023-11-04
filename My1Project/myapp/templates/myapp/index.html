@@ -1,0 +1,170 @@
+<!-- index.html -->
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeet</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?version=1">
+</head>
+<body>
+    <header class="header">
+        <picture class="picture">
+            <img src="https://homeet.hse.ru/static/media/logo_main.b8cda893341cae4261fc65095645f799.svg" alt="Лох">
+        </picture>
+        <button class="bttn" id="header-button">Выйти из аккаунта</button>
+    </header>
+    <main class>
+        <div class='container-1'>
+            <div class="reg-top">
+                <button class="bttn reg">На главную</button>
+                <div class="container-2">
+                    <h3 style="margin-right: 16px; font-size: 32px; font-weight: 700;">Создание профиля</h3>
+                    <div class="container-2-slash">
+                        <p style="margin-right: 16px;">/</p>
+                        <p style="font-weight: 700;">О себе</p>
+                    </div>
+                </div>
+                <div class="reg-bar"><div class="reg-progress-bar"></div></div>
+            </div>
+            <div class="reg-body">
+                <div class="reg-body-container-left">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'index' %}" id="myform">
+                        {% csrf_token %}
+                        <div class="myform">
+                        <div class="myform-avatar">
+                        <p style="color: #040013;">Аватар профиля</p>
+                        <label class="input-file-label">
+                            {{ form.image }}
+                            <span>Загрузить</span>
+                        </label>
+
+                        <p class="myform-avatar-gray">Загрузите фотографию весом не более 10мб</p>
+                        </div>
+                    <div class="outputImageBlock">
+                        <img id="outputImage" alt="">
+                    </div>
+                    <div class="myform-name">
+                        <label for="{{ form.name_surname.id_for_label }}" class="myform-name-gray">Имя и фамилия</label>
+                        {{ form.name_surname }}
+                        <p class="inputNameError"></p>
+                        <div class="myform-radio">
+                            <div class="myform-radio-wrapper">
+                                {{ form.gender }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="myform-birth">
+                        <label for="{{ form.birth_date.id_for_label }}" class="myform-name-gray"></label>
+                        {{ form.birth_date }}
+                    </div>
+                    <div class="myform-tg">{{ form.telegram }}</div>
+                    <div>
+                        <div class="myform-num"><label for="{{ form.phone_number.id_for_label }}" class="myform-num-gray">Номер телефона</label>
+                        {{ form.phone_number }}</div>
+                    </div>
+                    <div class="myform-about">
+                        <label for="about" class="myform-num-gray">О себе</label>
+                        {{ form.about }}
+                        <p class="form-about-gray">Например: Редко готовлю, но люблю ботать на кухне по ночам. Хочу завести собаку. Очень люблю читать, играть в хорроры
+                            и смотреть аниме. Открыт к общению и взаимопомощи :)</p>
+                    </div></div>
+                    <input type="submit" value="Продолжить" id="submitButton" class="bttn continue" />
+                </form>
+                </div>
+                <div class="reg-body-container-right">
+                    <div class="preview">
+                        <p class="preview-gray">Так будет выглядеть твоя будущая страница</p>
+                        <div class="preview-block">
+                            <div class="preview-block-left">
+                                <div class="preview-photo"><img id="outputImagePreview"></div>
+                                <button class="bttn-preview">Показать контакты</button>
+                            </div>
+                            <div class="preview-block-right">
+                                <div class="preview-info">
+                                    <div class="info-list">
+                                        <p style="font-weight: 700;" id="outputName">Саша Фефелов</p>
+                                        <div class="info-list-container">
+                                            <p style="font-size: 9px;" id="outputGender">Парень</p>
+                                            <div class="info-list-dot"></div>
+                                            <p style="font-size: 9px;" id="outputDate">21 год</p>
+                                            <div class="info-list-dot"></div>
+                                            <div class="info-list-empty"></div>
+                                        </div>
+                                        <div class="info-empty"></div>
+                                        <div class="info-more-container" style="padding-top: 10px;">
+                                            <p style="font-size: 9px; color:#5D5B66;">Мне очень нравится устраивать вечеринки,
+                                                дебоширить и мазать с...</p>
+                                            <p style="font-size: 9px; color: #7953c3;">Развернуть...</p>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="info-etc">
+                                        <div class="info-etc-top">
+                                            <div class="info-etc-top-1"></div>
+                                            <div class="info-etc-top-2"></div>
+                                        </div>
+                                        <div class="info-etc-bot">
+                                            <div class="info-etc-line"></div>
+                                            <div class="info-etc-container">
+                                                <div class="info-etc-container-1"></div>
+                                                <div class="info-etc-container-2"></div>
+                                            </div>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dont-know-block">
+                        <div>
+                        <p style="padding-bottom: 4px;">Мы совсем ничего про тебя не знаем</p>
+                        <p style="font-size: 14px; color:#5D5B66;">Расскажи о себе.</p>
+                        <p style="font-size: 14px; color:#5D5B66;">Люди пишут тем, кому доверяют. Тем более при поиске соседа</p>
+                        </div>
+                        <img src="{% static 'img/smile.png' %}" alt="boo" width="40px" height="38px" style="margin-top: 10px;">
+                    </div>
+                    <div class="continue-button">
+                        <!--<button class="bttn continue"><a href="" class="continue-url">Продолжить</a></button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="support-block">
+            <p class="support-email">Support@homeet.com</p>
+            <p class="support-gray">Техническая поддержка</p>
+            <div class="support-menu">
+                <div class="support-menu-list">
+                    <p>О сервисе</p>
+                    <p>Контакты</p>
+                    <p>Политика конфиденциальности</p>
+                </div>
+                <div class="support-menu-icons">
+                    <img src="{% static 'img/telegram.png' %}" alt="boo" height="24px" width="24px">
+                    <img src="{% static 'img/vk.png' %}" alt="boo" height="24px" width="24px">
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-line"></div>
+        <div class="footer-warn">
+            <div>
+                <p style="font-size: 14px; color:#aaaaaa; padding-bottom: 4px;">Предложение не является публичной офертой.</p>
+                <p style="font-size: 14px; color:#aaaaaa;">Сервис не несет ответственности за действия пользователей, достоверность информации и т.д.</p>
+            </div>
+            <p style="font-size: 14px; color:#000; align-self: flex-end;">Сделано в бвср</p>
+        </div>
+    </footer>
+    <div class="end-line"></div>
+    <section>
+    </section>
+    <aside></aside>
+    <script src="{% static 'js/myscript.js' %}?version=1"></script>
+</body>
+</html>
