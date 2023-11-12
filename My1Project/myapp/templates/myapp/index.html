@@ -9,6 +9,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homeet</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?version=1">
+    <style>
+        @font-face {
+            font-family: 'Museo Sans Cyrl';
+            src: url('{% static 'css/fonts/MuseoSansCyrl300.otf' %}') format('opentype');
+        }
+        @font-face {
+            font-family: 'Museo Sans Cyrl';
+            src: url('{% static 'css/fonts/MuseoSansCyrl500.otf' %}') format('opentype');
+        }
+        @font-face {
+            font-family: 'Museo Sans Cyrl';
+            src: url('{% static 'css/fonts/MuseoSansCyrl700.otf' %}') format('opentype');
+        }
+        @font-face {
+            font-family: 'Museo Sans Cyrl';
+            src: url('{% static 'css/fonts/MuseoSansCyrl900.otf' %}') format('opentype');
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -32,7 +50,7 @@
             </div>
             <div class="reg-body">
                 <div class="reg-body-container-left">
-                    <form method="post" enctype="multipart/form-data" action="{% url 'index' %}" id="myform">
+                    <form id="myform">
                         {% csrf_token %}
                         <div class="myform">
                         <div class="myform-avatar">
@@ -72,7 +90,7 @@
                         <p class="form-about-gray">Например: Редко готовлю, но люблю ботать на кухне по ночам. Хочу завести собаку. Очень люблю читать, играть в хорроры
                             и смотреть аниме. Открыт к общению и взаимопомощи :)</p>
                     </div></div>
-                    <input type="submit" value="Продолжить" id="submitButton" class="bttn continue" />
+                    <button type="button" class="bttn continue" onclick="postData()" id="submitButton">Продолжить</button>
                 </form>
                 </div>
                 <div class="reg-body-container-right">

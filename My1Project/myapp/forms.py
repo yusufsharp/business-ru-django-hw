@@ -22,6 +22,7 @@ class MyProfileForm(forms.ModelForm):
         'class': 'input',
         'id': 'inputDate',
         'placeholder': '2023-11-03',
+        'type': 'date',
     }))
     telegram = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'input',

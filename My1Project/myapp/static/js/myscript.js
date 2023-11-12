@@ -87,6 +87,35 @@ inputFile.addEventListener('change', function(){
   outputImageBlock.style.display = "block";
   previewPhoto.style.border = "none";
   buttonContinue.style.opacity = "1";
-  continueUrl.href = "/src2-obrazovaniye/index.html";
 });
 
+function postData() {
+  const formData = new FormData(document.getElementById("myform"));
+
+  fetch('/user_data/', {
+    method: 'POST',
+    body: formData
+  })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data)
+        alert('Данные успешны отправлены!');
+        document.getElementById("myform").reset();
+        window.location.href = '/myapp/study';
+      })
+      .catch(error => {
+        alert('Введите верный формат данных!');
+        if (response.status === 400) {
+          for (const field in data.errors) {
+            const errorField = document.getElementById(`${field}Error`);
+            errorField.textContent = data.errors[field];
+          }
+        }
+        console.error('Error:', error);
+      });
+}
